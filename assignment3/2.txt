@@ -1,0 +1,39 @@
+answer:
+1(1|01)+
+
+
+I followed the instructions
+
+The first and last symbol in w must be 1.
+
+which means that we must start with a 1
+
+which gives us an expression of
+
+1
+
+|w| ≥ 2. the string must be longer than 1
+
+which gives us
+
+11
+
+but it can be longer than two
+
+so 11+
+
+but we need to include 0
+
+
+1(0|1)+
+
+this breaks The string 00 must not occur in w.
+
+so we do
+
+1(1|01)+
+
+here we garantue that we start with a 1
+then we have atleast one more symbol(+) insteand of (*)
+
+but we cant have repeating 0 and we must end with a 1 which means that if we have a 0 it must be followed by 1 so 01 this also ensures that we end with a 1.

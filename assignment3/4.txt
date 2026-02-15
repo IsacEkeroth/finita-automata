@@ -1,0 +1,101 @@
+answer: a*((b|cb)(cb)*(bc*ab*|ccb*)|ccb*)
+
+Start: (s0)
+Accepting: (s4)
+
+        a     b     c
+ → s0   {s0}  {s1}  {s2}
+ s1     {}     {s3}  {s2}
+ s2     {}     {s1}  {s4}
+ s3     {s4}  {}     {s3}
+ *s4    {}     {s4}  {}
+
+I drew the nfa and removed one at a time, where I picked the node that can take you to an accepting state(s4)
+here s0 = e0, s1 = e1 and so forth
+
+
+e0 = ae0 + be1 + ce2
+
+e1 = be3 + ce2
+
+e2 = be1 + ce4
+
+e3 = a e4 + ce3
+
+e4 = epsilon + be4
+
+Solve e4
+
+e4 = epsilon + be4
+
+Ardens Lemma
+
+e4 = b*
+
+
+Solve e3
+
+e3 = ae4 + ce3
+
+e3 = ab* + ce3
+
+Apply Arden
+
+e3 = c*(ab*)
+
+
+Solve e2
+
+e2 = b e1 + c e4
+
+e2 = b e1 + c b*
+
+
+Solve e1
+
+e1 = be3 + ce2
+
+replace e3 and e2 with their values
+
+e1 = b(c*ab*) + c(be1 + cb*)
+
+e1 = bc*ab* + cbe1 + ccb*
+
+e1 = cbe1 + (bc*ab* + ccb*)
+
+e1 = (cb)*(bc*ab* + ccb*)
+
+
+Solve e2
+
+
+e2 = b e1 + c b*
+
+
+e2 = b(cb)*(bc*ab* + ccb*) + cb*
+
+
+ Solve e0
+
+e0 = ae0 + be1 + ce2
+
+take e1 and e2 and replace their values in e0
+
+e0 = ae0 + b(cb)*(bc*ab* + ccb*) + c(b(cb)*(bc*ab* + ccb*) + cb*)
+
+
+e0 = ae0 + b(cb)* (bc*ab* + ccb*) + cb(cb)*(bc*ab* + ccb*) + ccb*
+
+
+= ae0 + (b + cb)(cb)*(bc*ab* + ccb*) + ccb*
+
+ardends
+e0 = a*((b + cb)(cb)*(bc*ab* + ccb*) + ccb*)
+
+which gives us final regex of
+a*((b + cb)(cb)*(bc*ab* + ccb*) + ccb*)
+
+
+convert it to proper regex:
+
+a*((b|cb)(cb)*(bc*ab*|ccb*)|ccb*)

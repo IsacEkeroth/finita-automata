@@ -1,0 +1,33 @@
+answer:
+            0           1
+->  s0      {s0}        {s1}
+*   s1      {s1}        {s1}
+
+
+
+I started with (0 + 01*)* which can be simplified to (0+01)* which means that either we have 0 or 01 zero or more times
+and got
+            0           1
+->  s0      {s1 s2}     {}
+    s1      {}          {s2}
+*   s2      {s1 s2}     {}
+
+
+then I took (ε + 1) which is equivalent to maybe 1 so either 1 or nothing like 1* without the repetion
+
+then 1
+
+then (ε + 0 + 1)* which is (0 + 1)* since it can appear 0 times
+
+
+you can summerise this as you can start with 0 then followed by more zeroes or 1 repeated then you can have a 1 then you must have a 1 then you can have 0 or 1.
+
+where can means its not needed and must needs that you cant skip it
+
+working with this I managed to work it down to
+
+            0           1
+->  s0      {s0}        {s1}
+*   s1      {s1}        {s1}
+
+where to proced we need to enter 1 and once we are in s1 we have a trap where we cant exit the accepting state

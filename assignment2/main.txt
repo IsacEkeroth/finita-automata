@@ -1,0 +1,12 @@
+1. Words that has a 'c' before any 'a''s(or contain no 'a's at all) or contains two 'a''s
+
+2.
+    1. To create a DFA to solve this I identified the requirements as the word not containing "bba". I created states for each letter of "bba", to enter the sequence, you find 'b', then if the next letter is 'b' you go to the next state, if it's 'a' then you go back to s0, and if it is 'b', then you look for an 'a'. And if you entered the final state where "bba" was in a sequence you're trapped there, resulting in you ending up in an non accepting state.
+    2. Here the problem can be simplified to having two states, one accepting (even number of a's) and one non-accepting (odd number of a's), this means that whenever I see an 'a' I switch to the other state and if I see a 'b' then I stay in the current one.
+    3. Here I had to create a DFA that follows both constrains, I chose the bigger one (2.1 L(A)) as my base then created two copies of it, one for uneven 'a''s and one for even 'a''s. I followed L(A) as normal but when I found an 'a' I switched to the other copy. Then only one copy had accepting states where both "bba" did not exist in the word.
+
+3.
+    1. Here we have two accepting criteria, only needing one to pass. For M we need to make sure "baa" is a part of the word.
+     For N all words are valid unless there's an 'a' not followed by two or more 'b''s ie "b" and "ba".
+     Thanks to non determenism we can run both of them in parallel. Whenever we find an 'b' we go through the sequence looking for "baa" if we found that we can stay there until the string is fully checked. If we did not find "baa"(M) we look for N's criteria, where whenever we find an 'b' we need the next to characters to be 'a''s otherwise we need to stay in a non accepting state from N's criteria.
+     2. Here I followed the slides, I gave combination of states names such as q0 = {s0}, q1 = {s2, s4} and q2 = {s1, s4, s5}. For all existing combinations.

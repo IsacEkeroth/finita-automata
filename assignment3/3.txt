@@ -1,0 +1,90 @@
+answer:
+     a  b
+→ q0 q1 q2
+   q1 q3 q4
+   q2 q3 q5
+* q3 q3 q4
+* q4 q4 q7
+* q5 q3 q5
+* q7 q7 q7
+
+
+I drew the nfa then used it as a reference
+
+then I calculate the epsilon closure of my starting state (s0), then I use the accessible states when inputting an a({s1,s2}) then calculate the e closure for that, then I do the same for b and so on.
+
+
+q0 = ({s0})         => e closure({s0}) = s0
+
+q1 = ({s0} a)       => e close({s1}) = {s1, s2}
+
+q2 = ({s0} b)       => e close({s0, s2}) = {s0, s2}
+
+q3 = ({s1, s2} a)   => e close({s1, s4}) = {s1, s2, s3, s4, s5}
+
+q4 = ({s1, s2} b)   => e close({s3}) = {s3, s5}
+
+     ({s0, s2} a)   => e close({s1, s4}) = q3 (same definition from before)
+
+q5 = ({s0, s2} b)   => e close({s0, s2, s3}) = {s0, s2, s3, s5}
+
+     ({s1, s2, s3, s4, s5} a) => e close({s1, s2, s3, s4, s5}) = q3
+
+     ({s1, s2, s3, s4, s5} b) => e close({s3,s5}) = q4
+
+q6 = ({s3, s5}  a) => e close({s4 s5}) = {s3, s4, s5}
+
+q7 = ({s3, s5}  b) => e close({s5}) = {s5}
+
+    ({s0, s2, s3, s5} a) => e close({s1,s4,s5}) = q3
+
+    ({s0, s2, s3, s5} b) => e close({s0, s2, s3, s5}) = q5
+
+    ({s3, s4, s5} a) => e close({s3, s4, s5}) = q6
+
+    ({s3, s4, s5} b) => e close({s5}) = q7
+
+    ({s5} a)        => e close({s5}) = q7
+
+    ({s5} b)        => e close({s5}) = q7
+
+
+
+if it the resulting subset contains an accepting state(s5) then I mark it as accepting
+
+DFA State | NFA Subset                | a   | b
+----------|---------------------------|-----|-----
+-> q0      | {s0}                      | q1   | q2
+q1         | {s1, s2}                  | q3   | q4
+q2         | {s0, s2}                  | q3   | q5
+* q3       | {s1, s2, s3, s4, s5}      | q3   | q4
+* q4       | {s3, s5}                  | q6   | q7
+* q5       | {s0, s2, s3, s5}          | q3   | q5
+* q6       | {s3, s4, s5}              | q6   | q7
+* q7       | {s5}                      | q7   | q7
+
+
+a b
+
+→ q0 q1 q2
+   q1 q3 q4
+   q2 q3 q5
+* q3 q3 q4
+* q4 q6 q7
+* q5 q3 q5
+* q6 q6 q7
+* q7 q7 q7
+
+
+q4 = q6
+
+we remove q6 and point all references of q6 to q4
+
+a b
+→ q0 q1 q2
+   q1 q3 q4
+   q2 q3 q5
+* q3 q3 q4
+* q4 q4 q7
+* q5 q3 q5
+* q7 q7 q7
