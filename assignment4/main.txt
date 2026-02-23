@@ -1,0 +1,65 @@
+1.
+prove that a*(b + ab*) = b + aa*b*
+
+a*(b + ab*) = {Distributive Law}
+a*b + a*ab* = {aa* == a*a (Sliding) Property of Kleene Star}
+a*b + aa*b* = {a* == (epsilon + aa*) kleene star Property}
+(epsilon + aa*)b +  aa*b* =
+(b + aa*b) + aa*b* =
+b + aa*b + aa*b* = {aa*b is a subset of aa*b* (law of absoption)}
+b + aa*b*
+
+4.
+  	    0 	1
+ → *s₀ 	s₁ 	s₃
+    s₁ 	s₄ 	s₂
+    *s₂ s₁ 	s₅
+    s₃ 	s₀ 	s₄
+    s₄ 	s₄ 	s₄
+    s₅ 	s₂ 	s₄
+
+I started by drawing the DFA for my own sake, I find having the visual is easier than a table.
+
+1. Grouping them by accepting state
+p0 = {{s0, s2}, {s1,s3,s4,s5}}
+
+then I try to find equivalent values where leading to an accepting state is represented by f and otherwise an n. where the first part of the tupple is where I go from a 0 and the second part is where you go from a 1. eg {n,f}
+
+s0 = {n,n}
+s2 = {n,n}
+s1 = {n,f}
+s3 = {f,n}
+s4 = {n,n}
+s5 = {f,n}
+
+then I partition them based on the equivalience within the current groups
+which gives me
+s0 = s2
+s3 = s5
+
+p1 = {{(s0 and s2)},{s1,(s3 and s5),s4}}
+
+I give each of them a new name
+A =(s0 and s2)
+B = s1
+C =(s3 and s5)
+D = s4
+
+p1 = {{A},{B,C,D}}
+
+then I take all references from each group and point it to the equivalent Letter
+
+    0           1
+A   B(s1)       C(s3,s5)
+B   D(s4)       A(s2)
+C   A(s0,s2)    D(s4)
+D   D(s4)       D(s4)
+
+A contains our accepting states which means its still an accepting state, it also contains our starting state which makes it a starting state
+
+
+        0   1
+ → * A  B   C
+    B   D   A
+    C   A   D
+    D   D   D

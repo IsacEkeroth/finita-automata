@@ -1,0 +1,5 @@
+      0 1
+→ * A B C
+    B D A
+    C A D
+    D D D
