@@ -3,4 +3,5 @@
 ## Summary of the course
 
 - [Finite Summary](study_material/finita_summary.md)
-- [Notation](study_material/notation.md)
+- [Notation Summary](study_material/notation.md)
+- [Convesion Summary](study_material/conversion_summary.md)
