@@ -1,5 +1,3 @@
-This checklist provides a comprehensive summary of the concepts, lemmas, and terms used in the course lectures, organized by topic to assist in your final exam rehearsal.
-
 ### **1. Mathematical Foundations & Logic**
 
 - **Propositions:** Statements that are either true ($⊤$) or false ($⊥$).
