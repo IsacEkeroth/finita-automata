@@ -75,3 +75,12 @@
 - **Recursively Enumerable Languages:** Languages accepted by TMs (may loop on strings not in the language).
 - **Undecidable Problems:** Problems that cannot be solved by any TM, such as checking if a CFG is ambiguous or if two CFGs are equivalent.
 - **The Language Hierarchy:** Finite $\subsetneq$ Regular $\subsetneq$ Context-free $\subsetneq$ Recursive $\subsetneq$ Recursively Enumerable $\subsetneq$ All languages.
+
+### **6. Levels of complexity**
+
+| Language Type              | Machine Required            | Capabilities                                                                          |
+| :------------------------- | :-------------------------- | :------------------------------------------------------------------------------------ |
+| **Regular**                | DFA / NFA                   | Recognizes patterns and simple repetitions (Regular Expressions).                     |
+| **Context-Free**           | Pushdown Automata (1 stack) | Can count/match two sets of symbols or handle nested structures (like parentheses).   |
+| **Context-Sensitive**      | Linearly Bounded Automaton  | Can count/match three or more sets of symbols and handle string copying (e.g., $ww$). |
+| **Recursively Enumerable** | **Turing Machine**          | Can compute anything that is physically computable (the logic of a modern computer).  |
