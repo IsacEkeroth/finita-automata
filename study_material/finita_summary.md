@@ -84,3 +84,22 @@
 | **Context-Free**           | Pushdown Automata (1 stack) | Handles nested structures and matching pairs.       | $L = \{a^n b^n\}$ (Equal number of $a$'s and $b$'s) |
 | **Context-Sensitive**      | Linearly Bounded Automaton  | Matches three or more sets; handles string copying. | $L = \{a^n b^n c^n\}$ (Triple matching)             |
 | **Recursively Enumerable** | **Turing Machine**          | Anything physically computable (General logic).     | $L = \{ \text{Any valid computer algorithm} \}$     |
+
+### **7. RE rules**
+
+- **Identity of Union:** $e + \emptyset = \emptyset + e = e$
+- **Associativity of Union:** $e_1 + (e_2 + e_3) = (e_1 + e_2) + e_3$
+- **Commutativity of Union:** $e_1 + e_2 = e_2 + e_1$
+- **Identity of Concatenation:** $e\epsilon = \epsilon e = e$
+- **Associativity of Concatenation:** $e_1(e_2 e_3) = (e_1 e_2)e_3$
+- **Annihilator (Null Element):** $e\emptyset = \emptyset e = \emptyset$
+- **Left Distributivity:** $e_1(e_2 + e_3) = e_1 e_2 + e_1 e_3$
+- **Right Distributivity:** $(e_1 + e_2)e_3 = e_1 e_3 + e_2 e_3$
+- **Idempotency:** $e + e = e$
+- **Kleene Star Definition:** $e^* = \epsilon + ee^*$
+- **Empty Set Star:** $\emptyset^* = \epsilon$
+- **Redundancy Law:** $e^* e^* = (e^*)^* = e^*$
+- **Positive Closure Definition:** $e^+ = ee^* = e^*e$
+- **Epsilon Addition:** $(\epsilon + e)^* = e^*$
+- **Shifting Rule:** $e_1(e_2 e_1)^* = (e_1 e_2)^* e_1$
+- **Denesting Rule:** $(e_1 + e_2)^* = (e_1^* e_2)^* e_1^* = e_1^*(e_2 e_1^*)^*$
