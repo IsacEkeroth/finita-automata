@@ -78,9 +78,9 @@
 
 ### **6. Levels of complexity**
 
-| Language Type              | Machine Required            | Capabilities                                                                          |
-| :------------------------- | :-------------------------- | :------------------------------------------------------------------------------------ |
-| **Regular**                | DFA / NFA                   | Recognizes patterns and simple repetitions (Regular Expressions).                     |
-| **Context-Free**           | Pushdown Automata (1 stack) | Can count/match two sets of symbols or handle nested structures (like parentheses).   |
-| **Context-Sensitive**      | Linearly Bounded Automaton  | Can count/match three or more sets of symbols and handle string copying (e.g., $ww$). |
-| **Recursively Enumerable** | **Turing Machine**          | Can compute anything that is physically computable (the logic of a modern computer).  |
+| Language Type              | Machine Required            | Capabilities                                        | Example Language                                    |
+| :------------------------- | :-------------------------- | :-------------------------------------------------- | :-------------------------------------------------- |
+| **Regular**                | DFA / NFA                   | Recognizes patterns and simple repetitions.         | $L = \{a^n b^m\}$ (Any number of $a$'s then $b$'s)  |
+| **Context-Free**           | Pushdown Automata (1 stack) | Handles nested structures and matching pairs.       | $L = \{a^n b^n\}$ (Equal number of $a$'s and $b$'s) |
+| **Context-Sensitive**      | Linearly Bounded Automaton  | Matches three or more sets; handles string copying. | $L = \{a^n b^n c^n\}$ (Triple matching)             |
+| **Recursively Enumerable** | **Turing Machine**          | Anything physically computable (General logic).     | $L = \{ \text{Any valid computer algorithm} \}$     |
